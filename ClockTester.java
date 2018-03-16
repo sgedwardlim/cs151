@@ -10,25 +10,43 @@ public class ClockTester
 {
    public static void main(String[] args)
    {
-      JFrame frame = new JFrame();
+//      JFrame frame = new JFrame();
+//
+//
+//      ClockFace icon = new ClockFace(0, 0, CLOCK_RADIUS);
+//
+//      frame.setLayout(new BorderLayout());
+//      frame.add(icon, BorderLayout.CENTER);
+//
+//      JPanel topNav = new JPanel(new FlowLayout());
+//      topNav.add(new JButton("clock"));
+//      topNav.add(new JButton("stopwatch"));
+//      frame.add(topNav, BorderLayout.NORTH);
+//      icon.repaint();
+//
+//      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//      frame.pack();
+//      frame.setVisible(true);
 
-      
-      ClockFace icon = new ClockFace(0, 0, CLOCK_RADIUS);
-      
-      frame.setLayout(new BorderLayout());
-      frame.add(icon, BorderLayout.CENTER);
-      
-      JPanel topNav = new JPanel(new FlowLayout());
-      topNav.add(new JButton("clock"));
-      topNav.add(new JButton("stopwatch"));
-      frame.add(topNav, BorderLayout.NORTH);
-      icon.repaint();
 
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.pack();
-      frame.setVisible(true);
+       JFrame frame = new JFrame();
 
-      
+
+       MyClock icon = new MyClock(0, 0, CLOCK_RADIUS);
+
+       frame.setLayout(new BorderLayout());
+       frame.add(icon, BorderLayout.CENTER);
+
+       JPanel topNav = new JPanel(new FlowLayout());
+       topNav.add(new JButton("clock"));
+       topNav.add(new JButton("stopwatch"));
+       frame.add(topNav, BorderLayout.NORTH);
+       icon.repaint();
+
+       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       frame.pack();
+       frame.setVisible(true);
+
    }
 
    private static final int CLOCK_RADIUS = 500;
