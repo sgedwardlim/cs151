@@ -16,7 +16,7 @@ public class StopWatchDial extends JPanel {
     public StopWatchDial(int x, int y, int width) {
         this.radius = width / 2;
         this.clockFace = new ClockFace(x, y, radius * 2);
-        this.minutesHand = new ClockHand(Color.BLACK, 10, radius * .8, x + radius, radius);
+        this.minutesHand = new ClockHand(Color.BLACK, 10, radius * .8, x + radius, y + radius);
         this.setOpaque(false);
         this.setPreferredSize(new Dimension(width, width));
     }
