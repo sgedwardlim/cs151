@@ -2,52 +2,42 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/**
-   This program implements an animation that moves
-   a car shape.
-*/
-public class ClockTester
-{
-   public static void main(String[] args)
-   {
-//      JFrame frame = new JFrame();
-//
-//
-//      ClockFace icon = new ClockFace(0, 0, CLOCK_RADIUS);
-//
-//      frame.setLayout(new BorderLayout());
-//      frame.add(icon, BorderLayout.CENTER);
-//
-//      JPanel topNav = new JPanel(new FlowLayout());
-//      topNav.add(new JButton("clock"));
-//      topNav.add(new JButton("stopwatch"));
-//      frame.add(topNav, BorderLayout.NORTH);
-//      icon.repaint();
-//
-//      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//      frame.pack();
-//      frame.setVisible(true);
+public class ClockTester {
+    private static final int CLOCK_RADIUS = 300;
 
+    private static JButton clockButton = new JButton("clock");
+    private static JButton stopwatchButton = new JButton("stopwatch");
 
+    public static void main(String[] args) {
        JFrame frame = new JFrame();
 
+       MyClock myClock = new MyClock(0, 0, CLOCK_RADIUS * 2);
+       Stopwatch stopwatch = new Stopwatch(0, 0, CLOCK_RADIUS * 2);
 
-       MyClock icon = new MyClock(0, 0, CLOCK_RADIUS);
-
-       frame.setLayout(new BorderLayout());
-       frame.add(icon, BorderLayout.CENTER);
+       JPanel centerPanel = new JPanel();
+       centerPanel.setLayout(new OverlayLayout(centerPanel));
+       centerPanel.add(myClock);
+       centerPanel.add(stopwatch);
+       stopwatch.setVisible(false);
+       frame.add(centerPanel, BorderLayout.CENTER);
 
        JPanel topNav = new JPanel(new FlowLayout());
-       topNav.add(new JButton("clock"));
-       topNav.add(new JButton("stopwatch"));
+       topNav.add(clockButton);
+       topNav.add(stopwatchButton);
        frame.add(topNav, BorderLayout.NORTH);
-       icon.repaint();
+
+       clockButton.addActionListener(event -> {
+           stopwatch.setVisible(false);
+           myClock.setVisible(true);
+       });
+
+       stopwatchButton.addActionListener(event -> {
+           myClock.setVisible(false);
+           stopwatch.setVisible(true);
+       });
 
        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        frame.pack();
        frame.setVisible(true);
-
    }
-
-   private static final int CLOCK_RADIUS = 500;
 }

@@ -33,6 +33,6 @@ public class ClockHand implements MoveableShape {
 
     @Override
     public void move() {
-        deltaX += 10;
+        deltaX += 10;   // shitty thing that dont work, replace with correct algorith to rotate hand
     }
 }

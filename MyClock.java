@@ -2,16 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class MyClock extends JPanel {
-    private static final int CLOCK_RADIUS = 500;
+    private int radius;
 
-    private int x;
-    private int y;
-    private int width;
-
-    ClockFace clockFace;
-    ClockHand secondsHand = new ClockHand(Color.RED, 3, 50, CLOCK_RADIUS / 2, CLOCK_RADIUS / 2);
-    ClockHand minutesHand = new ClockHand(Color.BLACK, 6, 40, CLOCK_RADIUS / 2, CLOCK_RADIUS / 2);
-    ClockHand hoursHand = new ClockHand(Color.BLACK, 10, 250, CLOCK_RADIUS / 2, CLOCK_RADIUS / 2);
+    private ClockFace clockFace;
+    private ClockHand secondsHand;
+    private ClockHand minutesHand;
+    private ClockHand hoursHand;
 
     /**
      Constructs a Clock
@@ -19,22 +15,18 @@ public class MyClock extends JPanel {
      @param y the top of the bounding rectangle
      @param width the width of the bounding rectangle
      */
-    public MyClock(int x, int y, int width)
-    {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.clockFace = new ClockFace(x, y, CLOCK_RADIUS);
-        this.setOpaque(false);
-        this.setPreferredSize(new Dimension(width, width));
-
-        ShapeIcon hoursHandIcon = new ShapeIcon(hoursHand, CLOCK_RADIUS, CLOCK_RADIUS);
-        final JLabel label = new JLabel(hoursHandIcon);
-
+    public MyClock(int x, int y, int width) {
+        radius = width / 2;
+        clockFace = new ClockFace(x, y, width);
+        secondsHand = new ClockHand(Color.RED, 3, radius * .8, radius, radius);
+        minutesHand = new ClockHand(Color.BLACK, 6, radius * .6, radius, radius);
+        hoursHand = new ClockHand(Color.BLACK, 10, radius * .4, radius, radius);
+        setOpaque(false);
+        setPreferredSize(new Dimension(width, width));
 
         final int DELAY = 100;
         Timer t = new Timer(DELAY, event -> {
-            hoursHand.move();
+            secondsHand.move();
             repaint();
         });
         t.start();
@@ -44,5 +36,7 @@ public class MyClock extends JPanel {
         super.paintComponent(g);
         clockFace.paintComponent(g);
         hoursHand.draw((Graphics2D) g);
+        minutesHand.draw((Graphics2D) g);
+        secondsHand.draw((Graphics2D) g);
     }
 }
