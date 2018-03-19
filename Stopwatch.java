@@ -17,12 +17,13 @@ public class Stopwatch extends JPanel {
     public Stopwatch(int x, int y, int width) {
         this.radius = width / 2;
         this.clockFace = new ClockFace(x, y, radius * 2);
+        this.clockFace.incrementBy(ClockFaceIncrementType.FIVES);
         this.stopWatchDial = new StopWatchDial(radius - radius / 2, (int) (y + width * 0.1), radius);
         this.secondsHand = new ClockHand(Color.BLACK, 10, radius * .8, radius, radius,0);
         this.setOpaque(false);
         this.setPreferredSize(new Dimension(radius * 2, radius * 2));
 
-        final int DELAY = 100; // 100 ms
+        final int DELAY = 1000;
         Timer t = new Timer(DELAY, event -> {
             if (shouldIncrementInnerDial()) {
                 stopWatchDial.tick();
@@ -44,6 +45,6 @@ public class Stopwatch extends JPanel {
     }
 
     private boolean shouldIncrementInnerDial() {
-        return secondsElapsed == 1;
+        return secondsElapsed == 60;
     }
 }
