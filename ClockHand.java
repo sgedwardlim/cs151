@@ -57,6 +57,10 @@ public class ClockHand implements MoveableShape {
         	tick = 0;
         }
     }
+
+    public void reset() {
+        tick = 0;
+    }
     
     public double getTick(){
     	return tick;
