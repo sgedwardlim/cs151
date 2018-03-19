@@ -50,6 +50,7 @@ public class Stopwatch extends JPanel {
     
     public void reset(){
     	secondsHand = new ClockHand(Color.RED, 3, radius, radius, radius, 0);
+    	repaint();
     	secondsElapsed = 0;
     	stopWatchDial.reset();
     }

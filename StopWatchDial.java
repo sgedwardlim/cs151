@@ -40,6 +40,6 @@ public class StopWatchDial extends JPanel {
     
     public void reset(){
         minutesHand = new ClockHand(Color.RED, 3, radius, xPos + radius, yPos + radius, 0);
-
+        repaint();
     }
 }
