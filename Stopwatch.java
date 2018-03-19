@@ -19,7 +19,7 @@ public class Stopwatch extends JPanel {
         this.clockFace = new ClockFace(x, y, radius * 2);
         this.clockFace.incrementBy(ClockFaceIncrementType.FIVES);
         this.stopWatchDial = new StopWatchDial(radius - radius / 2, (int) (y + width * 0.1), radius);
-        this.secondsHand = new ClockHand(Color.BLACK, 10, radius * .8, radius, radius,0);
+        this.secondsHand = new ClockHand(Color.RED, 3, radius, radius, radius, 0);
         this.setOpaque(false);
         this.setPreferredSize(new Dimension(radius * 2, radius * 2));
 
@@ -45,6 +45,6 @@ public class Stopwatch extends JPanel {
     }
 
     private boolean shouldIncrementInnerDial() {
-        return secondsElapsed == 60;
+        return secondsElapsed == 59;
     }
 }
