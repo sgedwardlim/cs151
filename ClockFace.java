@@ -99,19 +99,19 @@ public class ClockFace extends JPanel {
         g2.setColor(Color.RED);
 
         for ( int i=1; i<=12; i++){
-        String numStr = type == ClockFaceIncrementType.ONES ? ""+i : ""+i*5;
-        FontMetrics fm = g2.getFontMetrics(g2.getFont());
-        int charWidth = fm.stringWidth(numStr);
-        int charHeight = fm.getHeight();
+            String numStr = type == ClockFaceIncrementType.ONES ? ""+i : ""+i*5;
+            FontMetrics fm = g2.getFontMetrics(g2.getFont());
+            int charWidth = fm.stringWidth(numStr);
+            int charHeight = fm.getHeight();
 
-        double di = (double)i;
-        double angleFrom12 = di/12.0*2.0*Math.PI;
-        double angleFrom3 = Math.PI/2.0-angleFrom12;
+            double di = (double)i;
+            double angleFrom12 = di/12.0*2.0*Math.PI;
+            double angleFrom3 = Math.PI/2.0-angleFrom12;
 
-        int tx = (int)(Math.cos(angleFrom3)*(r-longTickLen-charWidth));
-        int ty = (int)(-Math.sin(angleFrom3)*(r-longTickLen-charHeight));
+            int tx = (int)(Math.cos(angleFrom3)*(r-longTickLen-charWidth));
+            int ty = (int)(-Math.sin(angleFrom3)*(r-longTickLen-charHeight));
 
-        g2.drawString(numStr, (int)cX+tx, (int)cY+ty);
+            g2.drawString(numStr, (int)cX+tx, (int)cY+ty);
 
         }
     }
