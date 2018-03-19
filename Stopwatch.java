@@ -23,7 +23,7 @@ public class Stopwatch extends JPanel {
         this.setOpaque(false);
         this.setPreferredSize(new Dimension(radius * 2, radius * 2));
 
-        final int DELAY = 100;
+        final int DELAY = 1000;
         Timer t = new Timer(DELAY, event -> {
             if (shouldIncrementInnerDial()) {
                 stopWatchDial.tick();
