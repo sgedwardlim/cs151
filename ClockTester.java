@@ -32,6 +32,7 @@ public class ClockTester {
        });
 
        stopwatchButton.addActionListener(event -> {
+    	   stopwatch.reset();
            myClock.setVisible(false);
            stopwatch.setVisible(true);
        });

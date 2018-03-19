@@ -6,6 +6,8 @@ public class StopWatchDial extends JPanel {
     private int radius;
     private ClockFace clockFace;
     private ClockHand minutesHand;
+    private int xPos;
+    private int yPos;
 
     /**
      Constructs a StopWatchDial
@@ -14,6 +16,8 @@ public class StopWatchDial extends JPanel {
      @param width the width of the bounding rectangle
      */
     public StopWatchDial(int x, int y, int width) {
+    	this.xPos = x;
+    	this.yPos = y;
         this.radius = width / 2;
         this.clockFace = new ClockFace(x, y, radius * 2);
         this.clockFace.incrementBy(ClockFaceIncrementType.FIVES);
@@ -32,5 +36,10 @@ public class StopWatchDial extends JPanel {
     public void tick() {
         minutesHand.move();
         repaint();
+    }
+    
+    public void reset(){
+        minutesHand = new ClockHand(Color.RED, 3, radius, xPos + radius, yPos + radius, 0);
+
     }
 }

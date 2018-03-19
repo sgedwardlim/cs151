@@ -23,7 +23,7 @@ public class Stopwatch extends JPanel {
         this.setOpaque(false);
         this.setPreferredSize(new Dimension(radius * 2, radius * 2));
 
-        final int DELAY = 1000;
+        final int DELAY = 100;
         Timer t = new Timer(DELAY, event -> {
             if (shouldIncrementInnerDial()) {
                 stopWatchDial.tick();
@@ -31,7 +31,7 @@ public class Stopwatch extends JPanel {
             } else {
                 secondsElapsed++;
             }
-            secondsHand.move(); // expect the algorithm to move clocks by 1/60th to be implemented
+            secondsHand.move(); 
             repaint();
         });
         t.start();
@@ -46,5 +46,11 @@ public class Stopwatch extends JPanel {
 
     private boolean shouldIncrementInnerDial() {
         return secondsElapsed == 59;
+    }
+    
+    public void reset(){
+    	secondsHand = new ClockHand(Color.RED, 3, radius, radius, radius, 0);
+    	secondsElapsed = 0;
+    	stopWatchDial.reset();
     }
 }
